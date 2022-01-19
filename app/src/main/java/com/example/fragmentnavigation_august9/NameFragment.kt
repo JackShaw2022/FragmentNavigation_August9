@@ -6,21 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import com.example.fragmentnavigation_august9.databinding.FragmentFirstNameBinding
+import com.example.fragmentnavigation_august9.databinding.FragmentNameBinding
 
-class FirstNameFragment : Fragment() {
-
-    private var _binding: FragmentFirstNameBinding? = null
-    private val binding: FragmentFirstNameBinding get() = _binding!!
+class NameFragment : Fragment() {
+    private var _binding: FragmentNameBinding? = null
+    private val binding: FragmentNameBinding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFirstNameBinding.inflate(inflater, container, false)
+        _binding = FragmentNameBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -28,7 +26,6 @@ class FirstNameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-
             nameEt.editText?.addTextChangedListener {
                 toast(it.toString())
             }
@@ -38,14 +35,13 @@ class FirstNameFragment : Fragment() {
                     val lastName = lastNameEt.convertToString()
 
                     val direction =
-                        FirstNameFragmentDirections.firstNameFragmentToPasswordFragmentAction(
+                        NameFragmentDirections.firstNameFragmentToPasswordFragmentAction(
                             firstName,
                             lastName
                         )
                     findNavController().navigate(direction)
                 }
         }
-
     }
 
     override fun onDestroyView() {

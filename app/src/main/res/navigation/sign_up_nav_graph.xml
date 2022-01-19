@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sign_up_nav_graph"
-    app:startDestination="@id/first_name_fragment">
+    app:startDestination="@id/name_fragment">
 
     <!-- name says which fragment the tag should be attached to
             tools:layout is for devs to visualize the layout-->
     <fragment
-        android:id="@+id/first_name_fragment"
-        android:name="com.example.fragmentnavigation_august9.FirstNameFragment"
-        tools:layout="@layout/fragment_first_name">
+        android:id="@+id/name_fragment"
+        android:name="com.example.fragmentnavigation_august9.NameFragment"
+        tools:layout="@layout/fragment_name">
         <action
-            android:id="@+id/first_name_fragment_to_password_fragment_action"
+            android:id="@+id/name_fragment_to_password_fragment_action"
             app:destination="@id/password_fragment">
             <argument
                 android:name="first_name"
@@ -72,7 +72,7 @@
 
         <action
             android:id="@+id/pop_up_sign_up_complete_fragment_to_first_name_fragment"
-            app:popUpTo="@id/first_name_fragment" />
+            app:popUpTo="@id/name_fragment" />
     </fragment>
 
 </navigation>

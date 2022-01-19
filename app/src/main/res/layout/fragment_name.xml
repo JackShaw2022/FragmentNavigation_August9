@@ -26,7 +26,7 @@
         android:id="@+id/name_et"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/enter_name"
+        android:hint="@string/enter_first_name"
         app:layout_constraintBottom_toTopOf="@id/last_name_et"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

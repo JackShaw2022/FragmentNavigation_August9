@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.example.fragmentnavigation_august9.databinding.FragmentPasswordBinding
 import com.example.fragmentnavigation_august9.databinding.FragmentSignUpCompleteBinding
 
 class SignUpCompleteFragment : Fragment() {
