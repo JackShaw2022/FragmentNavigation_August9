@@ -14,9 +14,6 @@
         <action
             android:id="@+id/start_fragment_to_password_fragment_action"
             app:destination="@id/name_fragment">
-            <argument
-                android:name="start"
-                app:argType="string" />
         </action>
     </fragment>
     <fragment

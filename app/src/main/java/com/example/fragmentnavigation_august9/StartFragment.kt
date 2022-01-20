@@ -28,12 +28,9 @@ class StartFragment: Fragment() {
         with(binding) {
             nextBtn
                 .setOnClickListener {
-                    val firstName = "John"
 
                     val direction =
-                        StartFragmentDirections.startFragmentToPasswordFragmentAction(
-                            firstName
-                        )
+                        StartFragmentDirections.startFragmentToPasswordFragmentAction()
                     findNavController().navigate(direction)
                 }
         }
