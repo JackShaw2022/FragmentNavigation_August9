@@ -29,6 +29,7 @@ class SignUpCompleteFragment : Fragment() {
         with(binding) {
             nameTv.text = args.firstName
             lastNameTv.text = args.lastName
+            emailTv.text = args.email
             passwordTv.text = args.password
         }
     }

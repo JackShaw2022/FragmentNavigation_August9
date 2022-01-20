@@ -6,4 +6,8 @@
     <string name="enter_last_name">Enter Last Name</string>
     <string name="enter_password">Enter a Password</string>
     <string name="enter_first_name">Enter Your First Name</string>
+    <string name="email">Email</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="title">Welcome to the Lonely Mountain App</string>
+    <string name="create_account">Create Account</string>
 </resources>

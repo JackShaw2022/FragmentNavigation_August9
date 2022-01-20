@@ -7,21 +7,21 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.fragmentnavigation_august9.databinding.FragmentPasswordBinding
+import com.example.fragmentnavigation_august9.databinding.FragmentEmailBinding
 
-class PasswordFragment : Fragment() {
+class EmailFragment: Fragment() {
 
-    private val args: PasswordFragmentArgs by navArgs()
+    private val args: EmailFragmentArgs by navArgs()
 
-    private var _binding: FragmentPasswordBinding? = null
-    private val binding: FragmentPasswordBinding get() = _binding!!
+    private var _binding: FragmentEmailBinding? = null
+    private val binding: FragmentEmailBinding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPasswordBinding.inflate(inflater, container, false)
+        _binding = FragmentEmailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -30,14 +30,13 @@ class PasswordFragment : Fragment() {
 
         with(binding) {
             nextBtn.setOnClickListener {
-                val password = passwordEt.convertToString()
+                val email = emailEt.convertToString()
 
                 val directions =
-                    PasswordFragmentDirections.passwordFragmentToSignUpCompleteFragment(
+                    EmailFragmentDirections.emailFragmentToPasswordFragmentAction(
                         args.firstName,
                         args.lastName,
-                        args.email,
-                        password
+                        email
                     )
 
                 findNavController().navigate(directions)

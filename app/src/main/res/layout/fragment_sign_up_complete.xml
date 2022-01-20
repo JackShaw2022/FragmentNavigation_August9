@@ -31,6 +31,18 @@
         tools:text="Singleton" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/email_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAppearance="?textAppearanceHeadline4"
+        app:layout_constraintBottom_toTopOf="@id/password_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/last_name_tv"
+        tools:text="JohnS@ravebizz.com" />
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/password_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -39,7 +51,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/last_name_tv"
+        app:layout_constraintTop_toBottomOf="@id/email_tv"
         tools:text="Password" />
 
 

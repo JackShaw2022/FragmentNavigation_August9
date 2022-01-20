@@ -7,18 +7,18 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.fragmentnavigation_august9.databinding.FragmentNameBinding
+import com.example.fragmentnavigation_august9.databinding.FragmentStartBinding
 
-class NameFragment : Fragment() {
-    private var _binding: FragmentNameBinding? = null
-    private val binding: FragmentNameBinding get() = _binding!!
+class StartFragment: Fragment() {
+    private var _binding: FragmentStartBinding? = null
+    private val binding: FragmentStartBinding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNameBinding.inflate(inflater, container, false)
+        _binding = FragmentStartBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -28,13 +28,11 @@ class NameFragment : Fragment() {
         with(binding) {
             nextBtn
                 .setOnClickListener {
-                    val firstName = nameEt.convertToString()
-                    val lastName = lastNameEt.convertToString()
+                    val firstName = "John"
 
                     val direction =
-                        NameFragmentDirections.nameFragmentToPasswordFragmentAction(
-                            firstName,
-                            lastName
+                        StartFragmentDirections.startFragmentToPasswordFragmentAction(
+                            firstName
                         )
                     findNavController().navigate(direction)
                 }

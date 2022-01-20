@@ -3,17 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sign_up_nav_graph"
-    app:startDestination="@id/name_fragment">
+    app:startDestination="@id/start_fragment">
 
     <!-- name says which fragment the tag should be attached to
             tools:layout is for devs to visualize the layout-->
+    <fragment
+        android:id="@+id/start_fragment"
+        android:name="com.example.fragmentnavigation_august9.StartFragment"
+        tools:layout="@layout/fragment_start">
+        <action
+            android:id="@+id/start_fragment_to_password_fragment_action"
+            app:destination="@id/name_fragment">
+            <argument
+                android:name="start"
+                app:argType="string" />
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/name_fragment"
         android:name="com.example.fragmentnavigation_august9.NameFragment"
         tools:layout="@layout/fragment_name">
         <action
             android:id="@+id/name_fragment_to_password_fragment_action"
-            app:destination="@id/password_fragment">
+            app:destination="@id/email_fragment">
             <argument
                 android:name="first_name"
                 app:argType="string" />
@@ -23,11 +35,35 @@
         </action>
     </fragment>
     <fragment
+        android:id="@+id/email_fragment"
+        android:name="com.example.fragmentnavigation_august9.EmailFragment"
+        app:startDestination="@+id/email_fragment_to_password_fragment"
+        tools:layout="@layout/fragment_email" >
+            <argument
+                android:name="first_name"
+                app:argType="string" />
+            <argument
+                android:name="last_name"
+                app:argType="string" />
+        <action
+            android:id="@+id/email_fragment_to_password_fragment_action"
+            app:destination="@id/password_fragment">
+            <argument
+                android:name="first_name"
+                app:argType="string"/>
+            <argument
+                android:name="last_name"
+                app:argType="string" />
+            <argument
+                android:name="email"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
         android:id="@+id/password_fragment"
         android:name="com.example.fragmentnavigation_august9.PasswordFragment"
         app:startDestination="@id/password_fragment_to_sign_up_complete_fragment"
         tools:layout="@layout/fragment_password">
-
         <argument
             android:name="first_name"
             app:argType="string" />
@@ -35,6 +71,11 @@
         <argument
             android:name="last_name"
             app:argType="string" />
+
+        <argument
+            android:name="email"
+            app:argType="string" />
+
         <action
             android:id="@+id/password_fragment_to_sign_up_complete_fragment"
             app:destination="@id/sign_up_complete_fragment">
@@ -47,10 +88,16 @@
                 app:argType="string" />
 
             <argument
+                android:name="email"
+                app:argType="string" />
+
+            <argument
                 android:name="password"
                 app:argType="string" />
+
         </action>
     </fragment>
+
     <fragment
         android:id="@+id/sign_up_complete_fragment"
         android:name="com.example.fragmentnavigation_august9.SignUpCompleteFragment"
@@ -64,15 +111,16 @@
             android:name="last_name"
             android:defaultValue="Singleton"
             app:argType="string" />
+        <argument
+            android:name="email"
+            android:defaultValue="JohnS@ravebizz.com"
+            app:argType="string" />
 
         <argument
             android:name="password"
             android:defaultValue="Password"
             app:argType="string" />
 
-        <action
-            android:id="@+id/pop_up_sign_up_complete_fragment_to_first_name_fragment"
-            app:popUpTo="@id/name_fragment" />
     </fragment>
 
 </navigation>
