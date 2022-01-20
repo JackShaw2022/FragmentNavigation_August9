@@ -26,9 +26,12 @@ class NameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            nextBtn
-                .setOnClickListener {
-                    val firstName = nameEt.convertToString()
+
+            firstNameEt.editText?.addTextChangedListener{ text ->
+                nextBtn.isEnabled = text.toString().length > 4
+            }
+            nextBtn.setOnClickListener {
+                    val firstName = firstNameEt.convertToString()
                     val lastName = lastNameEt.convertToString()
 
                     val direction =
