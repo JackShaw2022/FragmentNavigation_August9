@@ -30,7 +30,7 @@ class StartFragment: Fragment() {
                 .setOnClickListener {
 
                     val direction =
-                        StartFragmentDirections.startFragmentToPasswordFragmentAction()
+                        com.example.fragmentnavigation_august9.StartFragmentDirections.startFragmentToPasswordFragmentAction()
                     findNavController().navigate(direction)
                 }
         }

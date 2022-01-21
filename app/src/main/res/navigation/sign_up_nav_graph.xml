@@ -23,12 +23,6 @@
         <action
             android:id="@+id/name_fragment_to_password_fragment_action"
             app:destination="@id/email_fragment">
-            <argument
-                android:name="first_name"
-                app:argType="string" />
-            <argument
-                android:name="last_name"
-                app:argType="string" />
         </action>
     </fragment>
     <fragment
@@ -36,24 +30,9 @@
         android:name="com.example.fragmentnavigation_august9.EmailFragment"
         app:startDestination="@+id/email_fragment_to_password_fragment"
         tools:layout="@layout/fragment_email" >
-            <argument
-                android:name="first_name"
-                app:argType="string" />
-            <argument
-                android:name="last_name"
-                app:argType="string" />
         <action
             android:id="@+id/email_fragment_to_password_fragment_action"
             app:destination="@id/password_fragment">
-            <argument
-                android:name="first_name"
-                app:argType="string"/>
-            <argument
-                android:name="last_name"
-                app:argType="string" />
-            <argument
-                android:name="email"
-                app:argType="string" />
         </action>
     </fragment>
     <fragment
@@ -61,37 +40,9 @@
         android:name="com.example.fragmentnavigation_august9.PasswordFragment"
         app:startDestination="@id/password_fragment_to_sign_up_complete_fragment"
         tools:layout="@layout/fragment_password">
-        <argument
-            android:name="first_name"
-            app:argType="string" />
-
-        <argument
-            android:name="last_name"
-            app:argType="string" />
-
-        <argument
-            android:name="email"
-            app:argType="string" />
-
         <action
             android:id="@+id/password_fragment_to_sign_up_complete_fragment"
             app:destination="@id/sign_up_complete_fragment">
-            <argument
-                android:name="first_name"
-                app:argType="string" />
-
-            <argument
-                android:name="last_name"
-                app:argType="string" />
-
-            <argument
-                android:name="email"
-                app:argType="string" />
-
-            <argument
-                android:name="password"
-                app:argType="string" />
-
         </action>
     </fragment>
 
@@ -99,25 +50,9 @@
         android:id="@+id/sign_up_complete_fragment"
         android:name="com.example.fragmentnavigation_august9.SignUpCompleteFragment"
         tools:layout="@layout/fragment_sign_up_complete">
-        <argument
-            android:name="first_name"
-            android:defaultValue="John"
-            app:argType="string" />
-
-        <argument
-            android:name="last_name"
-            android:defaultValue="Singleton"
-            app:argType="string" />
-        <argument
-            android:name="email"
-            android:defaultValue="JohnS@ravebizz.com"
-            app:argType="string" />
-
-        <argument
-            android:name="password"
-            android:defaultValue="Password"
-            app:argType="string" />
-
+        <action
+            android:id="@+id/sign_up_complete_fragment_to_name_fragment"
+            app:destination="@id/name_fragment" />
     </fragment>
 
 </navigation>

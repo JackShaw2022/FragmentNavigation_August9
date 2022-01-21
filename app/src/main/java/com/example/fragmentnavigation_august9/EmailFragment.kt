@@ -6,16 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
+import com.example.fragmentnavigation_august9.data.UserEmail
 import com.example.fragmentnavigation_august9.databinding.FragmentEmailBinding
+import com.example.fragmentnavigation_august9.viewModel.UserViewModel
 
 class EmailFragment: Fragment() {
 
-    private val args: EmailFragmentArgs by navArgs()
-
     private var _binding: FragmentEmailBinding? = null
     private val binding: FragmentEmailBinding get() = _binding!!
+
+    private lateinit var viewModel: UserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,18 +32,19 @@ class EmailFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
+            viewModel = ViewModelProvider(this@EmailFragment)[UserViewModel::class.java]
+
             emailEt.editText?.addTextChangedListener{ text ->
                 nextBtn.isEnabled = text.toString().length > 4
             }
             nextBtn.setOnClickListener {
-                val email = emailEt.convertToString()
+                val email = emailEt.editText?.text.toString()
+
+                val userEmail = UserEmail(email)
+                viewModel.addUserEmail(userEmail)
 
                 val directions =
-                    EmailFragmentDirections.emailFragmentToPasswordFragmentAction(
-                        args.firstName,
-                        args.lastName,
-                        email
-                    )
+                    com.example.fragmentnavigation_august9.EmailFragmentDirections.emailFragmentToPasswordFragmentAction()
 
                 findNavController().navigate(directions)
             }

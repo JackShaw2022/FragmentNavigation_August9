@@ -4,18 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
+import androidx.lifecycle.ViewModelProvider
 import com.example.fragmentnavigation_august9.databinding.FragmentPasswordBinding
+import com.example.fragmentnavigation_august9.viewModel.UserViewModel
 
 class PasswordFragment : Fragment() {
 
-    private val args: PasswordFragmentArgs by navArgs()
-
     private var _binding: FragmentPasswordBinding? = null
     private val binding: FragmentPasswordBinding get() = _binding!!
+
+    private lateinit var viewModel: UserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,21 +27,21 @@ class PasswordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this@PasswordFragment)[UserViewModel::class.java]
 
         with(binding) {
             passwordEt.editText?.addTextChangedListener{ text ->
                 nextBtn.isEnabled = text.toString().length > 4
             }
             nextBtn.setOnClickListener {
-                val password = passwordEt.convertToString()
+                val password = passwordEt.editText?.text.toString()
+
+                val userPassword = UserPassword(password)
+
+                viewModel.addUserPassword(userPassword)
 
                 val directions =
-                    PasswordFragmentDirections.passwordFragmentToSignUpCompleteFragment(
-                        args.firstName,
-                        args.lastName,
-                        args.email,
-                        password
-                    )
+                    com.example.fragmentnavigation_august9.PasswordFragmentDirections.passwordFragmentToSignUpCompleteFragment()
 
                 findNavController().navigate(directions)
             }

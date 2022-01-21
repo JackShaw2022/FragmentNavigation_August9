@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
+import androidx.lifecycle.ViewModelProvider
 import com.example.fragmentnavigation_august9.databinding.FragmentSignUpCompleteBinding
+import com.example.fragmentnavigation_august9.viewModel.UserViewModel
 
 class SignUpCompleteFragment : Fragment() {
 
-    private val args: SignUpCompleteFragmentArgs by navArgs()
-
     private var _binding: FragmentSignUpCompleteBinding? = null
     private val binding: FragmentSignUpCompleteBinding get() = _binding!!
+    private lateinit var viewModel: UserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,11 +26,19 @@ class SignUpCompleteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity()).get(UserViewModel::class.java)
+
         with(binding) {
-            nameTv.text = args.firstName
-            lastNameTv.text = args.lastName
-            emailTv.text = args.email
-            passwordTv.text = args.password
+
+            viewModel.users.observe(viewLifecycleOwner) { users ->
+                // .apply allows you to modify multiple fields of an object
+                userRv.apply {
+                    adapter = UserAdapter(users)
+                    // Tells reyclerview orientation
+                    layoutManager =
+                        LinearLayoutManager(this@SignUpCompleteFragment, LinearLayoutManager.VERTICAL, false)
+                }
+            }
         }
     }
 
